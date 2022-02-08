@@ -49,8 +49,9 @@ export default function Homepage() {
         setActualPage(actualPage -= 1)
     }
 
-    const moreCharacter = (el) => {
-        
+    const dispatchCharacter = (el) => {
+        dispatch({ type: 'updateCharacter', character: el })
+        dispatch({ type: 'character'})
     }
 
     return (
@@ -83,10 +84,10 @@ export default function Homepage() {
 
                 {characters.map(el => (
                     <Link to="characterInfo">
-                        <div className="character_card" onClick={() => dispatch({ type: 'updateCharacter', character: el })}>
+                        <div key={el.id} className="character_card" onClick={() => dispatchCharacter(el)}>
                             <table>
                                 <tr>
-                                    <td><img src={el.image} alt="avatar picture" /></td>
+                                    <td><img src={el.image} alt="avatar" /></td>
                                     <td><h5>{el.name}</h5></td>
                                     <td><h5>{el.species}</h5></td>
                                     <td>
