@@ -76,9 +76,19 @@ export default function Homepage() {
         }
     }
 
-    const dispatchCharacter = (el) => {
-        dispatch({ type: 'updateCharacter', character: el })
-        dispatch({ type: 'character' })
+    const dispatchElement = (el, str) => {
+        if(str === 'char') {
+            dispatch({ type: 'updateCharacter', character: el })
+            dispatch({ type: 'char' })
+        }
+        else if(str === 'epi') {
+            dispatch({ type: 'updateEpisode', episode: el })
+            dispatch({ type: 'epi' })
+        }
+        else {
+            dispatch({ type: 'updateLocation', location: el })
+            dispatch({ type: 'loc' })
+        }
     }
 
 
@@ -134,8 +144,8 @@ export default function Homepage() {
 
     if(characters.length === 0) content = ''
     else if (activeButton === 'char') content = characters.results.map(el => (
-        <Link to="characterInfo">
-            <div key={el.id} className="character_card" onClick={() => dispatchCharacter(el)}>
+        <Link to="moreInfo">
+            <div key={el.id} className="character_card" onClick={() => dispatchElement(el, 'char')}>
                 <table>
                     <tr>
                         <td><img src={el.image} alt="avatar" /></td>
@@ -158,8 +168,8 @@ export default function Homepage() {
     ))
 
     else if (activeButton === 'epi') content = episodes.results.map(el => (
-        <Link to="characterInfo">
-            <div key={el.id} className="character_card" onClick={() => dispatchCharacter(el)}>
+        <Link to="moreInfo">
+            <div key={el.id} className="character_card" onClick={() => dispatchElement(el, 'epi')}>
                 <table>
                     <tr>
                         <td><h5>{el.name}</h5></td>
@@ -174,8 +184,8 @@ export default function Homepage() {
     ))
 
     else if (activeButton === 'loc') content = locations.results.map(el => (
-        <Link to="characterInfo">
-            <div key={el.id} className="character_card" onClick={() => dispatchCharacter(el)}>
+        <Link to="moreInfo">
+            <div key={el.id} className="character_card" onClick={() => dispatchElement(el, 'loc')}>
                 <table>
                     <tr>
                         <td><h5>{el.name}</h5></td>

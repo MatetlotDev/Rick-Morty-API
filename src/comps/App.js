@@ -7,10 +7,10 @@ import { Routes, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
-import character from '../reducers/character.reducer';
+import element from '../reducers/element.reducer';
 import moreInfo from '../reducers/moreInfo.reducer'
 
-const store = createStore(combineReducers({character, moreInfo}));
+const store = createStore(combineReducers({element, moreInfo}));
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
     <Provider store={store}>
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/characterInfo" element={<CharacterInfo />} />
+        <Route path="/moreInfo" element={<CharacterInfo />} />
       </Routes>
     </Provider>
   );

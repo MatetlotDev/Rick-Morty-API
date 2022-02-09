@@ -1,8 +1,12 @@
 import '../styles/characterInfo.scss'
+import '../styles/locationInfo.scss'
+import '../styles/episodeInfo.scss'
 
 import React, { useEffect, useState } from 'react';
 
 import CharacterInfo from './CharacterInfo';
+import EpisodeInfo from './EpisodeInfo';
+import LocationInfo from './LocationInfo';
 
 import { Link } from "react-router-dom";
 
@@ -13,23 +17,54 @@ import { HiMail } from 'react-icons/hi'
 
 export default function MoreInfoPage() {
 
-    const character = useSelector(store => store.character)
+    const element = useSelector(store => store.element)
     const moreInfo = useSelector(store => store.moreInfo)
 
     const [episodes, setEpisodes] = useState([])
+    const [characters, setCharacters] = useState([])
 
     useEffect(() => {
-        const numbers = character.episode.map(el => {
-            const arr = el.split('/')
-            return arr[arr.length-1]
-        }).join(',');
-        (async () => {
-            const req = await fetch('https://rickandmortyapi.com/api/episode/' + numbers)
-            const res = await req.json()
-            setEpisodes(res)
-        })()
+        if(moreInfo === 'char') {
+            const numbers = element.episode.map(el => {
+                const arr = el.split('/')
+                return arr[arr.length-1]
+            }).join(',');
+
+            (async () => {
+                const req = await fetch('https://rickandmortyapi.com/api/episode/' + numbers)
+                const res = await req.json()
+                setEpisodes(res)
+            })()
+        }
+
+        else if(moreInfo === 'epi') {
+            const numbers = element.characters.map(el => {
+                const arr = el.split('/')
+                return arr[arr.length-1]
+            }).join(',');
+
+            (async () => {
+                const req = await fetch('https://rickandmortyapi.com/api/character/' + numbers)
+                const res = await req.json()
+                setCharacters(res)
+            })()
+        }
+
+        else {
+            const numbers = element.residents.map(el => {
+                const arr = el.split('/')
+                return arr[arr.length-1]
+            }).join(',');
+
+            (async () => {
+                const req = await fetch('https://rickandmortyapi.com/api/character/' + numbers)
+                const res = await req.json()
+                setCharacters(res)
+                console.log('requete ok')
+            })()
+        }
         
-    }, [character])
+    }, [element])
     
 
     const displayContent = (f) => {
@@ -53,8 +88,9 @@ export default function MoreInfoPage() {
             </div>
 
             {displayContent(() => {
-                if(moreInfo === 'character') return <CharacterInfo character={character} episodes={episodes} />
-
+                if(moreInfo === 'char') return <CharacterInfo character={element} episodes={episodes} />
+                else if(moreInfo === 'epi') return <EpisodeInfo episode={element} characters={characters} />
+                else return <LocationInfo location={element} characters={characters} />
             })}
             
         </main>
