@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 import { Link } from "react-router-dom";
 
-import { FaGithub, FaHome } from 'react-icons/fa'
+import { FaGithub } from 'react-icons/fa'
 import { HiMail } from 'react-icons/hi'
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi'
 import { IoMale, IoFemale, IoMaleFemale } from 'react-icons/io5'
@@ -78,16 +78,16 @@ export default function Homepage() {
 
     const dispatchElement = (el, str) => {
         if(str === 'char') {
+            dispatch({ type: 'selectChar', char: 'char' })
             dispatch({ type: 'updateCharacter', character: el })
-            dispatch({ type: 'char' })
         }
         else if(str === 'epi') {
+            dispatch({ type: 'selectEpi', epi: 'epi' })
             dispatch({ type: 'updateEpisode', episode: el })
-            dispatch({ type: 'epi' })
         }
         else {
+            dispatch({ type: 'selectLoc', loc: 'loc' })
             dispatch({ type: 'updateLocation', location: el })
-            dispatch({ type: 'loc' })
         }
     }
 
@@ -205,7 +205,6 @@ export default function Homepage() {
                 <nav>
                     <a href="https://github.com/MatetlotDev/Rick-Morty-API"><FaGithub color="#fff" size='40px' /></a>
                     <div className='contacts'>
-                        <Link to="/"><FaHome color="#fff" size='30px' /></Link>
                         <HiMail color="#fff" size='30px' />
                         <h6>Contact</h6>
                     </div>
