@@ -4,9 +4,11 @@ import React, { useEffect, useState } from 'react';
 
 import CharacterInfo from './CharacterInfo';
 
+import { Link } from "react-router-dom";
+
 import { useSelector } from 'react-redux';
 
-import { FaGithub } from 'react-icons/fa'
+import { FaGithub, FaHome } from 'react-icons/fa'
 import { HiMail } from 'react-icons/hi'
 
 export default function MoreInfoPage() {
@@ -41,6 +43,7 @@ export default function MoreInfoPage() {
                 <nav>
                     <a href="https://github.com/MatetlotDev/Rick-Morty-API"><FaGithub color="#fff" size='40px' /></a>
                     <div className='contacts'>
+                        <Link to="/"><FaHome color="#fff" size='30px' /></Link>
                         <HiMail color="#fff" size='30px' />
                         <h6>Contact</h6>
                     </div>

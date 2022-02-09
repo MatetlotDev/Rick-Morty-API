@@ -35,6 +35,10 @@ main {
             .contacts {
                 display: flex;
                 align-items: center;
+
+                & > * {
+                    margin-left: 1rem;
+                }
     
                 h6 {
                     font-size: 1.3em;
@@ -72,13 +76,18 @@ main {
             margin-bottom: 0.5em;
 
             .selected {
-                padding: 0 10px;
-                border-radius: 50px;
-                border: 2px solid #fff;
                 display: flex;
                 align-items: center;
-                font-size: 2vh;
-                cursor: pointer;
+
+                button {
+                    padding: 5px 15px;
+                    border-radius: 50px;
+                    border: 2px solid #fff;
+                    color: #fff;
+                    font-size: 2.2vh;
+                    margin-right: 2rem;
+                    cursor: pointer;
+                }
             }
 
             .pages {
@@ -99,7 +108,7 @@ main {
             text-decoration: none;
             color: #fff;
         }
-        
+
         hr {
             height: 4px;
             background-color: #fff;
@@ -111,7 +120,7 @@ main {
             justify-content: space-around;
             align-items: center;
             padding: 1.5rem;
-            font-size: 3.5vh;
+            font-size: 3vh;
             cursor: pointer;
 
             &:last-child{ border: none; }
