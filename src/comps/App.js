@@ -10,7 +10,7 @@ import { createStore, combineReducers } from 'redux';
 import element from '../reducers/element.reducer';
 import moreInfo from '../reducers/moreInfo.reducer'
 
-const store = createStore(combineReducers({element, moreInfo}));
+const store = createStore(combineReducers({ element, moreInfo }));
 
 function App() {
 

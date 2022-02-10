@@ -2,8 +2,10 @@ import React from 'react';
 
 export default function LocationInfo({ location, characters, handleClick }) {
 
-  if(location.dimension) {
+  // check to see if the element is a location
+  if (location.dimension) {
     let character;
+    // then check if there's one or more, same than CharacterInfo.js
     if (characters.name) character = (
       <div className="card" onClick={() => handleClick('char', characters.id)}>
         <img src={characters.image} alt="avatar" />
@@ -16,7 +18,7 @@ export default function LocationInfo({ location, characters, handleClick }) {
         <h4>{el.name}</h4>
       </div>
     ))
-  
+
     return (
       <div className='content_location_info'>
         <h2>Location: {location.name}</h2>

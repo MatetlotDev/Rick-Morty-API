@@ -2,13 +2,17 @@ import React from 'react';
 
 export default function CharacterInfo({ character, episodes, handleClick }) {
 
+    // make sure the element is a character, because when dispatch moreInfo, the Element is not yet dispatched and it causes error of course
     if (character.species) {
         let content;
+
+        // and then check if there's one or more episode, if only then it's a object
         if (episodes.name) content = (
             <div key={episodes.id} className="episode_card" onClick={() => handleClick('epi', episodes.id)}>
                 <p>{episodes.episode}  -  {episodes.name}  -  {episodes.air_date}</p>
             </div>
         )
+        // if more than one it's an array
         else content = (
             episodes.map(el => (
                 <div key={el.id} className="episode_card" onClick={() => handleClick('epi', el.id)}>
@@ -17,8 +21,9 @@ export default function CharacterInfo({ character, episodes, handleClick }) {
             ))
         )
 
+        // takes the location id by the url to send it back when click on it
         const arr = character.location.url.split('/')
-        const locationId = arr[arr.length-1]
+        const locationId = arr[arr.length - 1]
 
         return (
             <div className="content_character_info" >
@@ -44,5 +49,5 @@ export default function CharacterInfo({ character, episodes, handleClick }) {
             </div>
         );
     }
-    else return ''
+    else return '' // if it's not a character, return nothing
 }

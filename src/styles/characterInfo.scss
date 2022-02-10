@@ -1,19 +1,25 @@
+@import './homepage.scss';
+
 .content_character_info{
     display: flex;
     margin-top: 5rem;
+    z-index: 10;
 
     .character_full_card {
-        z-index: 10;
         background: #101E37;
         height: 85vh;
         padding: 2rem;
         border-radius: 25px;
         border: 4px solid #fff;
         font-size: 2.5vh;
+        max-width: fit-content;
 
         img {
             border-radius: 8px;
+            max-width: 15vw;
+            min-width: 200px;
         }
+
         .char_infos {
             margin-top: 1rem;
 

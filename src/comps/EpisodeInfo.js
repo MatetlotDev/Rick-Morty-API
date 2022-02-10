@@ -3,6 +3,7 @@ import React from 'react';
 
 export default function EpisodeInfo({ episode, characters, handleClick }) {
 
+    // check to if the element is an episode 
     if (episode.air_date) return (
         <div className='content_location_info'>
             <h2>Episode: {episode.episode}</h2>
