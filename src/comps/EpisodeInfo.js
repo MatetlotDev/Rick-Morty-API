@@ -12,7 +12,7 @@ export default function EpisodeInfo({ episode, characters, handleClick }) {
             <br />
             <h3>Characters:</h3>
             {characters.map(el => (
-                <div className="card" onClick={() => handleClick('char', el.id)}>
+                <div key={el.id} className="card" onClick={() => handleClick('char', el.id)}>
                     <img src={el.image} alt="avatar" />
                     <h4>{el.name}</h4>
                 </div>

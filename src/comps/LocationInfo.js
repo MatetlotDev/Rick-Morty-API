@@ -12,12 +12,13 @@ export default function LocationInfo({ location, characters, handleClick }) {
         <h4>{characters.name}</h4>
       </div>
     )
-    else character = characters.map(el => (
-      <div className="card" onClick={() => handleClick('char', el.id)}>
+    else if(characters.length > 0) character = characters.map(el => (
+      <div key={el.id} className="card" onClick={() => handleClick('char', el.id)}>
         <img src={el.image} alt="avatar" />
         <h4>{el.name}</h4>
       </div>
     ))
+    else character = 'No residents'
 
     return (
       <div className='content_location_info'>

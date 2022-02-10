@@ -71,6 +71,10 @@ export default function MoreInfoPage() {
             })();
         };
 
+        window.scrollTo({
+            top: 0,
+        })
+
     }, [element]);
 
 
@@ -127,7 +131,7 @@ export default function MoreInfoPage() {
             </div>
 
             <Link to='/'>
-                <FaArrowLeft style={{ position: 'absolute', top: '15vh', left: '5vw', cursor: 'pointer' }} color="#fff" size='40px' />
+                <FaArrowLeft style={{ position: 'fixed', top: '100px', left: '30px', cursor: 'pointer', zIndex: '11' }} color="#fff" size='40px' />
             </Link>
 
             {displayContent(() => {

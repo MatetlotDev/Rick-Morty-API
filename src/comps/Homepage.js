@@ -176,23 +176,25 @@ export default function Homepage() {
     // check to see the active button and return in content what need to be shown
     if (characters.length === 0) content = ''; // for the first loading, because the request of characters is not finished yet 
     else if (activeButton === 'char') content = characters.results.map(el => (
-        <Link to="moreInfo">
-            <div key={el.id} className="character_card" onClick={() => dispatchElement(el, 'char')}>
+        <Link to="moreInfo" key={el.id}>
+            <div className="character_card" onClick={() => dispatchElement(el, 'char')}>
                 <table>
-                    <tr>
-                        <td><img src={el.image} alt="avatar" /></td>
-                        <td><h5>{el.name}</h5></td>
-                        <td><h5>{el.species}</h5></td>
-                        <td>
-                            {genderLogo(() => {
-                                if (el.gender === 'Male') return <IoMale color='#fff' size='45px' />
-                                else if (el.gender === 'Female') return <IoFemale color='#fff' size='45px' />
-                                else if (el.gender === 'Genderless') return <IoMaleFemale color='#fff' size='45px' />
-                                else return '??'
-                            })}
-                        </td>
-                        <td>More infos...</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td><img src={el.image} alt="avatar" /></td>
+                            <td><h5>{el.name}</h5></td>
+                            <td><h5>{el.species}</h5></td>
+                            <td>
+                                {genderLogo(() => {
+                                    if (el.gender === 'Male') return <IoMale color='#fff' size='45px' />
+                                    else if (el.gender === 'Female') return <IoFemale color='#fff' size='45px' />
+                                    else if (el.gender === 'Genderless') return <IoMaleFemale color='#fff' size='45px' />
+                                    else return '??'
+                                })}
+                            </td>
+                            <td>More infos...</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <hr />
@@ -200,15 +202,17 @@ export default function Homepage() {
     ));
 
     else if (activeButton === 'epi') content = episodes.results.map(el => (
-        <Link to="moreInfo">
-            <div key={el.id} className="character_card" onClick={() => dispatchElement(el, 'epi')}>
+        <Link to="moreInfo" key={el.id}>
+            <div className="character_card" onClick={() => dispatchElement(el, 'epi')}>
                 <table>
-                    <tr>
-                        <td><h5>{el.name}</h5></td>
-                        <td><h5>{el.air_date}</h5></td>
-                        <td><h5>{el.episode}</h5></td>
-                        <td>More infos...</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td><h5>{el.name}</h5></td>
+                            <td><h5>{el.air_date}</h5></td>
+                            <td><h5>{el.episode}</h5></td>
+                            <td>More infos...</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <hr />
@@ -216,15 +220,17 @@ export default function Homepage() {
     ));
 
     else if (activeButton === 'loc') content = locations.results.map(el => (
-        <Link to="moreInfo">
-            <div key={el.id} className="character_card" onClick={() => dispatchElement(el, 'loc')}>
+        <Link to="moreInfo" key={el.id}>
+            <div className="character_card" onClick={() => dispatchElement(el, 'loc')}>
                 <table>
-                    <tr>
-                        <td><h5>{el.name}</h5></td>
-                        <td><h5>{el.type}</h5></td>
-                        <td><h5>{el.dimension}</h5></td>
-                        <td>More infos...</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td><h5>{el.name}</h5></td>
+                            <td><h5>{el.type}</h5></td>
+                            <td><h5>{el.dimension}</h5></td>
+                            <td>More infos...</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <hr />
