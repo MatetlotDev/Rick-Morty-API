@@ -1,6 +1,8 @@
+@import './colors.scss';
+
 .content_location_info {
     z-index: 10;
-    background: #101E37;
+    background: $light_blue;
     border: 4px solid #fff;
     border-radius: 25px;
     margin-top: 5rem;

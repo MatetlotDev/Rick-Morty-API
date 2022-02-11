@@ -1,4 +1,5 @@
 @import './homepage.scss';
+@import './colors.scss';
 
 .arrow_return {
     position: fixed; 
@@ -8,7 +9,7 @@
     z-index: 11; 
     border: 2px solid #fff;
     border-radius: 50%;
-    background: #101e37;
+    background: $light_blue;
 }
 
 .content_character_info{
@@ -22,7 +23,7 @@
     }
 
     .character_full_card {
-        background: #101E37;
+        background: $light_blue;
         height: fit-content;
         padding: 2rem;
         border-radius: 25px;
@@ -54,7 +55,7 @@
     }
 
     .episodes_card {
-        background: #101E37;
+        background: $light_blue;
         padding: 2rem;
         border-radius: 25px;
         z-index: 10;

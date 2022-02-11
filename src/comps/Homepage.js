@@ -52,7 +52,7 @@ export default function Homepage() {
     // go to bottom of the page for footer
     const scrollToBottom = () => {
         window.scrollTo({
-            top: window.innerHeight*1000,
+            top: document.body.clientHeight,
             behavior: 'smooth'
         });
     };
@@ -248,7 +248,7 @@ export default function Homepage() {
             <div className="back">
                 <nav>
                     <a href="https://github.com/MatetlotDev/Rick-Morty-API" target="_blank" rel="noreferrer"><FaGithub color="#fff" size='40px' /></a>
-                    <div className='contacts' onClick={scrollToBottom}>
+                    <div className='contacts' onClick={() => scrollToBottom()}>
                         <HiMail color="#fff" size='30px' />
                         <h6>Contact</h6>
                     </div>

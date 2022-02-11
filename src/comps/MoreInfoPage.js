@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { FaGithub, FaArrowLeft } from 'react-icons/fa';
+import { FaGithub, FaArrowLeft, FaArrowUp } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
 
 export default function MoreInfoPage() {
@@ -23,6 +23,7 @@ export default function MoreInfoPage() {
 
     const [episodes, setEpisodes] = useState([]);
     const [characters, setCharacters] = useState([]);
+    const [scrollButton, setScrollButton] = useState('none');
 
 
     // every time the element change
@@ -75,6 +76,8 @@ export default function MoreInfoPage() {
             top: 0,
         })
 
+        window.addEventListener("scroll", () => window.pageYOffset > window.innerHeight / 2 ? setScrollButton('block') : setScrollButton('none'));
+
     }, [element]);
 
 
@@ -110,7 +113,15 @@ export default function MoreInfoPage() {
     // go to bottom of the page for footer
     const scrollToBottom = () => {
         window.scrollTo({
-            top: 10000,
+            top: document.body.clientHeight,
+            behavior: 'smooth'
+        });
+    };
+
+    // goes back to 'almost' top
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
             behavior: 'smooth'
         });
     };
@@ -134,6 +145,8 @@ export default function MoreInfoPage() {
                 <FaArrowLeft className='arrow_return' color="#fff" size='40px' />
             </Link>
 
+            <div className='toTop' onClick={scrollToTop} style={{ display: scrollButton }} ><FaArrowUp color="#fff" size='40px' /></div>
+
             {displayContent(() => {
                 // watch moreInfo to see what to show, every component takes the changeContent function and it's content
                 if (moreInfo === 'char') return <CharacterInfo handleClick={changeContent} character={element} episodes={episodes} />
@@ -144,11 +157,12 @@ export default function MoreInfoPage() {
 
             <footer>
                 <div className="creator">
-                    <p>Created by MatetlotDev</p>
+                    <p className='desktop'>Created by MatetlotDev</p>
+                    <p className='mobile'>My</p>
                     <a href="https://github.com/MatetlotDev/Rick-Morty-API" target="_blank" rel="noreferrer"><FaGithub color="#fff" size='20px' /></a>
                 </div>
                 <a href="https://rickandmortyapi.com/" target="_blank" rel="noreferrer"><p>With Rick and Morty API</p></a>
-                <p>Contact me on <a href="https://github.com/MatetlotDev/Rick-Morty-API" target="_blank" rel="noreferrer">Github</a></p>
+                <p className='contact'>Contact me on <a href="https://github.com/MatetlotDev/Rick-Morty-API" target="_blank" rel="noreferrer">Github</a></p>
             </footer>
 
         </main>
