@@ -131,7 +131,7 @@ export default function MoreInfoPage() {
             </div>
 
             <Link to='/'>
-                <FaArrowLeft style={{ position: 'fixed', top: '100px', left: '30px', cursor: 'pointer', zIndex: '11' }} color="#fff" size='40px' />
+                <FaArrowLeft className='arrow_return' color="#fff" size='40px' />
             </Link>
 
             {displayContent(() => {
