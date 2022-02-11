@@ -8,7 +8,7 @@ The API provide a list of all the characters, episodes and locations of Rick and
 If you want to see the demo on live, you can see it [here](https://pacific-sea-64863.herokuapp.com/). Or you can clone this repo, 'cd' into it, 'npm install', then 'npm start' and you should see it live in your browser.
 
 # Constraints
-- Use React 
-- Use Redux 
+- Use of React 
+- Use of Redux 
 - Display the API content in a table
 - Make a pagination to render the elements
