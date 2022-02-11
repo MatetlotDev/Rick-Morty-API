@@ -120,7 +120,7 @@ export default function MoreInfoPage() {
         <main>
             <div className="back">
                 <nav>
-                    <a href="https://github.com/MatetlotDev/Rick-Morty-API"><FaGithub color="#fff" size='40px' /></a>
+                    <a href="https://github.com/MatetlotDev/Rick-Morty-API" target="_blank" rel="noreferrer"><FaGithub color="#fff" size='40px' /></a>
                     <div className='contacts' onClick={scrollToBottom}>
                         <HiMail color="#fff" size='30px' />
                         <h6>Contact</h6>
@@ -145,10 +145,10 @@ export default function MoreInfoPage() {
             <footer>
                 <div className="creator">
                     <p>Created by MatetlotDev</p>
-                    <a href="https://github.com/MatetlotDev/Rick-Morty-API"><FaGithub color="#fff" size='20px' /></a>
+                    <a href="https://github.com/MatetlotDev/Rick-Morty-API" target="_blank" rel="noreferrer"><FaGithub color="#fff" size='20px' /></a>
                 </div>
-                <a href="https://rickandmortyapi.com/"><p>With Rick and Morty API</p></a>
-                <p>Contact me on <a href="https://github.com/MatetlotDev/Rick-Morty-API">Github</a></p>
+                <a href="https://rickandmortyapi.com/" target="_blank" rel="noreferrer"><p>With Rick and Morty API</p></a>
+                <p>Contact me on <a href="https://github.com/MatetlotDev/Rick-Morty-API" target="_blank" rel="noreferrer">Github</a></p>
             </footer>
 
         </main>

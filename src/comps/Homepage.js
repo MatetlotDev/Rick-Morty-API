@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 
 import { FaGithub, FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
+import { BsFilterSquare } from 'react-icons/bs';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { IoMale, IoFemale, IoMaleFemale } from 'react-icons/io5';
 
@@ -22,6 +23,7 @@ export default function Homepage() {
     const [locations, setLocations] = useState([]);
     let [actualPage, setActualPage] = useState(1);
     const [activeButton, setActiveButton] = useState('char');
+    const [mobileMenu, setMobileMenu] = useState('none');
 
     useEffect(() => {
 
@@ -33,7 +35,7 @@ export default function Homepage() {
         })();
 
         // listen the scroll of the window to show or not the arrow button
-        window.addEventListener("scroll", () => window.pageYOffset > 1000 ? setScrollButton('block') : setScrollButton('none'));
+        window.addEventListener("scroll", () => window.pageYOffset > window.innerHeight ? setScrollButton('block') : setScrollButton('none'));
 
     }, []);
 
@@ -50,7 +52,7 @@ export default function Homepage() {
     // go to bottom of the page for footer
     const scrollToBottom = () => {
         window.scrollTo({
-            top: 10000,
+            top: window.innerHeight*1000,
             behavior: 'smooth'
         });
     };
@@ -168,7 +170,9 @@ export default function Homepage() {
             };
             setActiveButton('loc');
         };
+        if(mobileMenu === 'block') setMobileMenu('none');
     };
+
 
 
     let content = [];
@@ -178,17 +182,17 @@ export default function Homepage() {
     else if (activeButton === 'char') content = characters.results.map(el => (
         <Link to="moreInfo" key={el.id}>
             <div className="character_card" onClick={() => dispatchElement(el, 'char')}>
+                <img src={el.image} alt="avatar" />
                 <table>
                     <tbody>
                         <tr>
-                            <td><img src={el.image} alt="avatar" /></td>
                             <td><h5>{el.name}</h5></td>
                             <td><h5>{el.species}</h5></td>
                             <td>
                                 {genderLogo(() => {
-                                    if (el.gender === 'Male') return <IoMale color='#fff' size='45px' />
-                                    else if (el.gender === 'Female') return <IoFemale color='#fff' size='45px' />
-                                    else if (el.gender === 'Genderless') return <IoMaleFemale color='#fff' size='45px' />
+                                    if (el.gender === 'Male') return <IoMale className='gender' color='#fff' />
+                                    else if (el.gender === 'Female') return <IoFemale className='gender' color='#fff' />
+                                    else if (el.gender === 'Genderless') return <IoMaleFemale className='gender' color='#fff' />
                                     else return '??'
                                 })}
                             </td>
@@ -243,7 +247,7 @@ export default function Homepage() {
         <main>
             <div className="back">
                 <nav>
-                    <a href="https://github.com/MatetlotDev/Rick-Morty-API"><FaGithub color="#fff" size='40px' /></a>
+                    <a href="https://github.com/MatetlotDev/Rick-Morty-API" target="_blank" rel="noreferrer"><FaGithub color="#fff" size='40px' /></a>
                     <div className='contacts' onClick={scrollToBottom}>
                         <HiMail color="#fff" size='30px' />
                         <h6>Contact</h6>
@@ -255,20 +259,55 @@ export default function Homepage() {
                 <FaArrowDown color="#fff" size='20px' />
             </div>
 
-            <div className='toTop' onClick={scrollToTop} style={{ display: scrollButton }} ><FaArrowUp color="#101E37" size='40px' /></div>
+            <div className='toTop' onClick={scrollToTop} style={{ display: scrollButton }} ><FaArrowUp color="#fff" size='40px' /></div>
 
             <div className="content">
                 <div className="navigation">
                     <div className="selected">
-                        <button onClick={() => changeButton('char')} style={{ background: activeButton === 'char' ? '#101E37' : '#ffffff5e' }}>Characters</button>
-                        <button onClick={() => changeButton('epi')} style={{ background: activeButton === 'epi' ? '#101E37' : '#ffffff5e' }}>Episodes</button>
-                        <button onClick={() => changeButton('loc')} style={{ background: activeButton === 'loc' ? '#101E37' : '#ffffff5e' }}>Locations</button>
+                        <div className="mobile" onClick={() => setMobileMenu('block')} >
+                            <BsFilterSquare color='#101E37' size='40px' />
+                        </div>
+                        <div className="desktop">
+                            <button
+                                onClick={() => changeButton('char')}
+                                style={{ background: activeButton === 'char' ? '#101E37' : '#ffffff5e', color: activeButton === 'char' ? '#fff' : '#101E37' }}>
+                                Characters
+                            </button>
+                            <button
+                                onClick={() => changeButton('epi')}
+                                style={{ background: activeButton === 'epi' ? '#101E37' : '#ffffff5e', color: activeButton === 'epi' ? '#fff' : '#101E37' }}>
+                                Episodes
+                            </button>
+                            <button
+                                onClick={() => changeButton('loc')}
+                                style={{ background: activeButton === 'loc' ? '#101E37' : '#ffffff5e', color: activeButton === 'loc' ? '#fff' : '#101E37' }}>
+                                Locations
+                            </button>
+                        </div>
                     </div>
                     <div className="pages">
-                        <BiChevronLeft color='#fff' size='35px' className='prev' onClick={prevPage} />
+                        <BiChevronLeft color='#101E37' size='35px' className='prev' onClick={prevPage} />
                         <p>{actualPage}</p>
-                        <BiChevronRight color='#fff' size='35px' className='next' onClick={nextPage} />
+                        <BiChevronRight color='#101E37' size='35px' className='next' onClick={nextPage} />
                     </div>
+                </div>
+
+                <div className="mobile_menu" style={{display: mobileMenu}}>
+                    <button
+                        onClick={() => changeButton('char')}
+                        style={{ background: activeButton === 'char' ? '#ffffff5e' : '#101E37', color: activeButton === 'char' ? '#101E37' : '#fff' }}>
+                        Characters
+                    </button>
+                    <button
+                        onClick={() => changeButton('epi')}
+                        style={{ background: activeButton === 'epi' ? '#ffffff5e' : '#101E37', color: activeButton === 'epi' ? '#101E37' : '#fff' }}>
+                        Episodes
+                    </button>
+                    <button
+                        onClick={() => changeButton('loc')}
+                        style={{ background: activeButton === 'loc' ? '#ffffff5e' : '#101E37', color: activeButton === 'loc' ? '#101E37' : '#fff' }}>
+                        Locations
+                    </button>
                 </div>
 
                 {content}
@@ -277,11 +316,12 @@ export default function Homepage() {
 
             <footer>
                 <div className="creator">
-                    <p>Created by MatetlotDev</p>
-                    <a href="https://github.com/MatetlotDev/Rick-Morty-API"><FaGithub color="#fff" size='20px' /></a>
+                    <p className='desktop'>Created by MatetlotDev</p>
+                    <p className='mobile'>My</p>
+                    <a href="https://github.com/MatetlotDev/Rick-Morty-API" target="_blank" rel="noreferrer"><FaGithub color="#fff" size='20px' /></a>
                 </div>
-                <a href="https://rickandmortyapi.com/"><p>With Rick and Morty API</p></a>
-                <p>Contact me on <a href="https://github.com/MatetlotDev/Rick-Morty-API">Github</a></p>
+                <a href="https://rickandmortyapi.com/" target="_blank" rel="noreferrer"><p>With Rick and Morty API</p></a>
+                <p className='contact'>Contact me on <a href="https://github.com/MatetlotDev/Rick-Morty-API" target="_blank" rel="noreferrer">Github</a></p>
             </footer>
 
         </main>
