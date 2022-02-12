@@ -9,7 +9,7 @@
     z-index: 11; 
     border: 2px solid #fff;
     border-radius: 50%;
-    background: $light_blue;
+    background: $dark_blue;
 }
 
 .content_character_info{
@@ -23,7 +23,7 @@
     }
 
     .character_full_card {
-        background: $light_blue;
+        background: $dark_blue;
         height: fit-content;
         padding: 2rem;
         border-radius: 25px;
@@ -55,7 +55,7 @@
     }
 
     .episodes_card {
-        background: $light_blue;
+        background: $dark_blue;
         padding: 2rem;
         border-radius: 25px;
         z-index: 10;

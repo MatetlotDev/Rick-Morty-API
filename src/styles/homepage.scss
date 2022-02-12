@@ -76,8 +76,8 @@ main {
             @include sm-screen {
                 font-size: 1.2rem;
                 max-width: 100%;
-                color: $light_blue;
-                border: 2px solid $light_blue;
+                color: $dark_blue;
+                border: 2px solid $dark_blue;
                 padding: 1rem;
                 margin-top: -6rem;
             }
@@ -90,7 +90,7 @@ main {
         border-radius: 50%;
         border: 2px solid #fff;
         padding: 0.5rem;
-        background: $light_blue;
+        background: $dark_blue;
         position: fixed; 
         bottom: 10vh;
         right: 4vw;
@@ -105,7 +105,7 @@ main {
         min-width: fit-content;
         border-radius: 25px;
         border: 4px solid #fff;
-        background: $light_blue;
+        background: $dark_blue;
         padding: 1rem;
         position: relative;
 
@@ -135,8 +135,8 @@ main {
                     button {
                         padding: 5px 15px;
                         border-radius: 50px;
-                        border: 2px solid $light_blue;
-                        color: $light_blue;
+                        border: 2px solid $dark_blue;
+                        color: $dark_blue;
                         font-size: 2.2vh;
                         margin-right: 2rem;
                         cursor: pointer;
@@ -148,10 +148,10 @@ main {
                 display: flex;
                 align-items: center;
                 font-size: 2rem;
-                color: $light_blue;
+                color: $dark_blue;
 
                 & :nth-child(1), & :nth-child(3){
-                    border: 2px solid $light_blue;
+                    border: 2px solid $dark_blue;
                     border-radius: 50%;
                     cursor: pointer;
                 }
@@ -232,7 +232,7 @@ main {
             left: 0;
             border-radius: 25px;
             border: 4px solid #fff;
-            background: $light_blue;
+            background: $dark_blue;
             padding: 1rem;
             max-width: min-content;
     
@@ -257,7 +257,7 @@ main {
         margin-top: 2rem;
         justify-content: space-around;
         align-items: center;
-        background: $light_blue;
+        background: $dark_blue;
         z-index: 10;
         width: 80%;
 
